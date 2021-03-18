@@ -1,7 +1,0 @@
-customhost = "database-project.cztl6udrkfik.us-east-2.rds.amazonaws.com"
-customuser ="postgres"
-custompass = "admin123"
-customdb = "project"
-customport = "5432"
-custombucket = "myto-do"
-customregion = "us-east-2"
