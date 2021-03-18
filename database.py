@@ -2,7 +2,7 @@ import psycopg2
 import psycopg2.extras
 import json
 import pandas as pd
-from pymongo import MongoClient
+# from pymongo import MongoClient
 import webbrowser
 from psycopg2 import sql
 import geopy.distance
@@ -141,21 +141,21 @@ class DatabaseProjectStores():
 
             
             # get the county_code out of the given zip code
-            client = MongoClient("mongodb://localhost:27017/")
-            projectDB = client["project"]
-            project_collection = projectDB["project"]
+            # client = MongoClient("mongodb://localhost:27017/")
+            # projectDB = client["project"]
+            # project_collection = projectDB["project"]
             
-            # client.server_info()
-            results = project_collection.find({"zip_code": {"$in": all_list}})
+            # # client.server_info()
+            # results = project_collection.find({"zip_code": {"$in": all_list}})
     
-            zip_county_dict ={}
-            for r in results:
+            # zip_county_dict ={}
+            # for r in results:
                 zip_county_dict[r['zip_code']] = r['county_code']
            
 
-            for i in range(len(r1)):
-                row= r1[i]
-                r1[i].append(zip_county_dict[row[3]])
+            # for i in range(len(r1)):
+            #     row= r1[i]
+            #     r1[i].append(zip_county_dict[row[3]])
            
             i=0
             limit = len(r1)
@@ -167,7 +167,7 @@ class DatabaseProjectStores():
                 
                 # market_name, address_line1, city, zip, contact, marklet_link, \
                 #     operation_hours, operation_season
-                printing_string = "Name of the farmer's market is {0}  and their address is {1} in {2} . They are open during {3} and following season {4}. It had the county code {5} and zip code is {6}  ".format(row[0], row[1], row[2],  row[6], row[7], row[8], row[3])
+                printing_string = "Name of the farmer's market is {0}  and their address is {1} in {2} . They are open during {3} and following season {4}. It had zip code  {5}  ".format(row[0], row[1], row[2],  row[6], row[7],  row[3])
                 print(printing_string)
                 ans = input("Do you want to open it's link (y or n) or enter 1 to stop this loop")
                 if(ans =='y'):

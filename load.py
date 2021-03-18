@@ -4,7 +4,7 @@ import pandas as pd
 import math
 import psycopg2
 from sqlalchemy import create_engine
-from pymongo import MongoClient
+# from pymongo import MongoClient
 import json
 
 def convertToInt(d):
@@ -173,14 +173,14 @@ def load_into_database():
         # print("loop me ")
         json_data = json.load(f)
 
-    client = MongoClient("mongodb://localhost:27017/")
-    projectDB = client["project"]
-    project_collection = projectDB["project"]
-    project_collection.drop()
-    project_collection.insert_many(json_data)
+    # client = MongoClient("mongodb://localhost:27017/")
+    # projectDB = client["project"]
+    # project_collection = projectDB["project"]
+    # project_collection.drop()
+    # project_collection.insert_many(json_data)
 
-    db = client.project
-    collection = db["project"]
+    # db = client.project
+    # collection = db["project"]
     # query = {"zip_code": 12009}
     # result = list(collection.find(query))
     # print(result)
