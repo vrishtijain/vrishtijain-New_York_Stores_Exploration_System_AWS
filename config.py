@@ -1,0 +1,6 @@
+customhost = "admin.cztl6udrkfik.us-east-2.rds.amazonaws.com"
+customuser ="admin"
+custompass ="admin123"
+customdb = "todo"
+custombucket = "myto-do"
+customregion = "us-east-2"
