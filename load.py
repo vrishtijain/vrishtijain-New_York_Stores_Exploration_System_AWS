@@ -4,6 +4,7 @@ import pandas as pd
 import math
 import psycopg2
 from sqlalchemy import create_engine
+from config import *
 # from pymongo import MongoClient
 import json
 
@@ -14,8 +15,11 @@ def load_into_database():
 
 
    
-    engine = create_engine(
-        'postgresql+psycopg2://project:project@127.0.0.1:5432/project')
+     
+    
+    # dialect+driver://username:password@host:port/database
+    engine_query = "postgresql+psycopg2://"+ customuser+":"+custompass + "@" + customhost + ":" +  customport+"/" + customdb
+    engine = create_engine(engine_query)
     g_county_zip = pd.read_csv('./code/datasets/global_county_zip_code.csv')
 
 

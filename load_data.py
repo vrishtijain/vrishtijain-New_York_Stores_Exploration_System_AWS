@@ -5,11 +5,16 @@
 import psycopg2
 import preprocessing
 import load
+from config import *
 # creating schema
 def load_everything():
     # loadign scheme
-    connection_string = " user = 'project' password = 'project'  host = '127.0.0.1'  port = '5432' dbname = 'project' "
-    conn = psycopg2.connect(connection_string)
+    # connection_string = " user = 'project' password = 'project'  host = '127.0.0.1'  port = '5432' dbname = 'project' "
+    conn = psycopg2.connect(user = customuser,
+                                password = custompass,
+                                host = customhost,
+                                port = customport,
+                                database = customdb)
     with conn.cursor() as cursor:
         setup_queries = open('schema.sql', 'r').read()
         cursor.execute(setup_queries)

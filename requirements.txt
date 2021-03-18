@@ -1,10 +1,7 @@
 wget
 pandas
-csv
-json
 psycopg2
 sqlalchemy
 pymongo
-webbrowser
 geopy
 numpy

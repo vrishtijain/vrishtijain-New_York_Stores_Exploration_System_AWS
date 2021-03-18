@@ -2,6 +2,7 @@ import psycopg2
 import psycopg2.extras
 import json
 import pandas as pd
+from config import *
 # from pymongo import MongoClient
 import webbrowser
 from psycopg2 import sql
@@ -10,11 +11,11 @@ import geopy.distance
 class DatabaseProjectStores():
     
     def __init__(self):
-        self.conn = psycopg2.connect(user = "project",
-                                password = "project",
-                                host = "127.0.0.1",
-                                port = "5432",
-                                database = "project")
+        self.conn = psycopg2.connect(user = customuser,
+                                password = custompass,
+                                host = customhost,
+                                port = customport,
+                                database = customdb)
     
     
 #    query = sql.SQL(""" SELECT a.title, i.numberInStock, i.price" \
@@ -115,12 +116,13 @@ class DatabaseProjectStores():
         try:
             cursor = self.conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
             q = """SELECT distinct(operation_month) from  farmers_market"""
+            # print("here")
             cursor.execute(q)
             # r1 = cursor.fetchall()
             all_operation_month = ""
             for ( r) in cursor:
                 # print(r, r[0])
-                all_operation_month += " " + r[0] + ", "
+                all_operation_month += " " + str(r[0]) + ", "
 
             print(" Enter operation_month and it should one of the following ")
             print(all_operation_month)
@@ -150,7 +152,7 @@ class DatabaseProjectStores():
     
             # zip_county_dict ={}
             # for r in results:
-                zip_county_dict[r['zip_code']] = r['county_code']
+                # zip_county_dict[r['zip_code']] = r['county_code']
            
 
             # for i in range(len(r1)):
